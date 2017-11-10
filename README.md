@@ -10,6 +10,7 @@ A log parser command line application with java. It demonstrates
 6. Some helper implementations
 
 To run application
+
     java -cp "parser.jar" com.ef.Parser --accesslog=/path/to/file --startDate=2017-01-01.13:00:00 --duration=hourly --threshold=100 
 
 In order to load logs to Please execute below sql commands to create mysql database with name "LOGTEST"
@@ -22,5 +23,7 @@ parameter from it to create Jdbc connection.  After this parameters are set, the
 necessary tables (Logs and Reports) automatically.
 
 CREATE DATABASE  LOGTEST;
+
 CREATE USER IF NOT EXISTS 'parser'@'localhost' IDENTIFIED BY 'parser1234';
+
 GRANT ALL ON LOGTEST.* TO 'parser'@'localhost';
