@@ -54,16 +54,12 @@ public class Parser {
                         params.getThreshold());
 
                 logFileAnalyzer.run();
-
                 boolean isInterrupted = waitTaskOrKeyToFinish(logFileAnalyzer, 'q');
-                if (isInterrupted) {
-                    exitCode = EXITCODE_USER_INTERRUPTED;
-                    ConsoleUtils.println("Process is interrupted by the user");
-                    return;
+                if (!isInterrupted) {
+                  logFileLoader.run();
+                  isInterrupted = waitTaskOrKeyToFinish(logFileLoader, 'q');
                 }
 
-                logFileLoader.run();
-                isInterrupted = waitTaskOrKeyToFinish(logFileLoader, 'q');
                 if (isInterrupted) {
                     exitCode = EXITCODE_USER_INTERRUPTED;
                     ConsoleUtils.println("Process is interrupted by the user");
